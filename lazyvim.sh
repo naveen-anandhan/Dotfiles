@@ -14,7 +14,7 @@ sudo apt install -y \
   neovim git curl ripgrep fd-find \
   build-essential unzip \
   nodejs npm python3-venv python3-pip \
-  tmux starship
+  tmux starship zsh
 
 echo "Cleaning old configs..."
 rm -rf ~/.config/nvim ~/.tmux.conf ~/.config/starship.toml ~/Dotfiles
