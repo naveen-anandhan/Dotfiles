@@ -44,6 +44,9 @@ if ! grep -q "starship init zsh" ~/.zshrc; then
   echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 fi
 
+echo "Setting zsh as default shell..."
+chsh -s $(which zsh)
+
 echo "Fixing fd command for telescope..."
 mkdir -p ~/.local/bin
 ln -sf "$(which fdfind)" ~/.local/bin/fd
