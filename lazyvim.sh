@@ -17,17 +17,21 @@ sudo apt install -y \
   tmux starship zsh
 
 echo "Cleaning old configs..."
-rm -rf ~/.config/nvim ~/.tmux.conf ~/.config/starship.toml ~/Dotfiles
+# Added VS Code settings path to cleaning
+rm -rf ~/.config/nvim ~/.tmux.conf ~/.config/starship.toml ~/Dotfiles ~/.config/Code/User/settings.json
 
 echo "Cloning dotfiles..."
 git clone https://github.com/naveen-anandhan/Dotfiles.git ~/Dotfiles
 
 echo "Linking configs..."
 mkdir -p ~/.config
+mkdir -p ~/.config/Code/User # Ensure VS Code user directory exists
 
 ln -sfn ~/Dotfiles/nvim ~/.config/nvim
 ln -sfn ~/Dotfiles/tmux/tmux.conf ~/.tmux.conf
 ln -sfn ~/Dotfiles/starship/starship.toml ~/.config/starship.toml
+# Linking VS Code settings
+ln -sfn ~/Dotfiles/vs_code_settings.json ~/.config/Code/User/settings.json
 
 echo "Installing tmux plugin manager..."
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -45,7 +49,7 @@ if ! grep -q "starship init zsh" ~/.zshrc; then
 fi
 
 echo "Setting zsh as default shell..."
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $USER
 
 echo "Fixing fd command for telescope..."
 mkdir -p ~/.local/bin

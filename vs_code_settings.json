@@ -1,0 +1,88 @@
+{
+  "keyboard.dispatch": "code",
+  "editor.lineNumbers": "relative",
+  "notebook.lineNumbers": "on",
+  "vim.enable": true,
+  "vim.useSystemClipboard": true,
+  "workbench.colorTheme": "Catppuccin Mocha",
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<Left>"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<Right>"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<Down>"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<Up>"]
+    }
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Tab>"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": ["d"],
+      "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["d", "d"],
+      "after": ["\"", "_", "d", "d"]
+    }
+  ],
+
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["i"],
+      "after": ["<Esc>", "i"]
+    }
+  ],
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"],
+      "after": ["g", "v"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"],
+      "after": ["g", "v"]
+    },
+    {
+      "before": ["<Tab>"],
+      "commands": ["editor.action.indentLines"],
+      "after": ["g", "v"]
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": ["editor.action.outdentLines"],
+      "after": ["g", "v"]
+    },
+    {
+      "before": ["d"],
+      "after": ["\"", "_", "d"]
+    }
+  ]
+}
