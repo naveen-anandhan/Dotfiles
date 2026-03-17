@@ -25,7 +25,9 @@ return {
     keys = {
       {
         "<leader>fp",
-        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+        function()
+          require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
+        end,
         desc = "Find Plugin File",
       },
     },
@@ -71,7 +73,7 @@ return {
 
   -- add any tools you want to have installed below
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
@@ -80,6 +82,15 @@ return {
         "flake8",
       },
     },
+  },
+
+  -- 🔥 FIX: disable cmp documentation popup
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      opts.window.documentation = nil
+      return opts
+    end,
   },
 
   -----------------------------------------------------------------------

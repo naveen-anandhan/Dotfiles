@@ -84,5 +84,15 @@
       "before": ["d"],
       "after": ["\"", "_", "d"]
     }
-  ]
+  ],
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "chat.editing.explainChanges.enabled": true,
+  "chat.tips.enabled": false,
+  "editor.inlineSuggest.edits.allowCodeShifting": "never",
+  "editor.inlineSuggest.edits.renderSideBySide": "never",
+  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "terminal.integrated.suggest.suggestOnTriggerCharacters": true
 }
