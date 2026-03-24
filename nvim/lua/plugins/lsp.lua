@@ -2,6 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      servers = { pyright = {} },
       setup = {
         -- This disables the automatic floating window for signature help
         ["*"] = function()
