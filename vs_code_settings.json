@@ -3,7 +3,9 @@
   "editor.lineNumbers": "relative",
   "notebook.lineNumbers": "on",
   "vim.enable": true,
+  "vim.sneak": true,
   "vim.useSystemClipboard": true,
+  "vim.surround": true,
   "workbench.colorTheme": "Catppuccin Mocha",
 
   "vim.insertModeKeyBindings": [
@@ -31,6 +33,14 @@
 
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
       "before": ["<Tab>"],
       "commands": ["editor.action.indentLines"]
     },
@@ -52,14 +62,22 @@
     {
       "before": ["j", "k"],
       "after": ["<Esc>"]
-    },
-    {
-      "before": ["i"],
-      "after": ["<Esc>", "i"]
     }
+    // {
+    //   "before": ["i"],
+    //   "after": ["<Esc>", "i"]
+    // }
   ],
 
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
     {
       "before": ["J"],
       "commands": ["editor.action.moveLinesDownAction"],
