@@ -1,65 +1,58 @@
+-- Global Dadbod settings (Keep these at the top of the file)
+vim.g.db_completion_column_res_with_alias = 1 -- Stop automatic backticks (``)
+vim.g.vim_dadbod_completion_ignore_case = 1    -- Make searching case-insensitive
+vim.g.vim_dadbod_completion_mark = ""         -- Remove the [DB] tag to keep it clean
+
 return {
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = "*",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      "kristijanhusak/vim-dadbod-completion",
       "L3MON4D3/LuaSnip",
     },
-    config = function()
-      local cmp = require("cmp")
+    opts = {
+      -- 1. Disable Ghost Text (the preview text)
+      completion = {
+        ghost_text = { enabled = false },
+      },
 
-      cmp.setup({
-        preselect = cmp.PreselectMode.None, 
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-          autocomplete = {
-            require("cmp.types").cmp.TriggerEvent.TextChanged,
+      -- 2. Set up your Keymaps (Tab to accept, C-j/C-k to move)
+      keymap = {
+        preset = "default",
+        ["<Tab>"] = { "select_and_accept", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+      },
+
+      -- 3. Configure Sources and Scoring
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+        providers = {
+          -- Give buffer words a high boost so common words like 'select' win
+          buffer = {
+            score_offset = 15,
+          },
+          -- Configure Dadbod to hide the "stupid" system noise
+          dadbod = {
+            name = "Dadbod",
+            module = "vim_dadbod_completion.blink",
+            score_offset = 2,
+            -- This logic pushes system variables (with underscores) to the bottom
+            transform_items = function(_, items)
+              for _, item in ipairs(items) do
+                if item.label:match("_") then
+                  item.score_offset = -100
+                end
+              end
+              return items
+            end,
           },
         },
+      },
 
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-
-        mapping = cmp.mapping.preset.insert({
-
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.confirm({ select = true })
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          ["<C-Space>"] = cmp.mapping.complete(),
-
-          ["<C-y>"] = cmp.config.disable,
-        }), 
-
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "vim-dadbod-completion" },
-        }),
-      })
-    end,
+      -- 4. Enable Snippets
+      snippets = { preset = "luasnip" },
+    },
   },
 }
