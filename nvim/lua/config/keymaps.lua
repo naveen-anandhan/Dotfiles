@@ -34,7 +34,6 @@ vim.keymap.set("v", "<leader>r", function()
   end
 end, { desc = "Run selected" })
 
-
 vim.keymap.set({ "n", "v" }, "L", "$", { desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "H", "^", { desc = "Start of line" })
 
@@ -50,7 +49,6 @@ vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true })
 vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true })
 vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true })
 vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true, silent = true, desc = "Move Up" })
-
 
 -- Escape with jk
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
