@@ -5,6 +5,7 @@
 vim.keymap.set("n", "<leader>tt", "<cmd>Telescope colorscheme<cr>", { desc = "Theme Switcher" })
 vim.keymap.set("n", "<leader>q", ":bd<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>r", ":DB<CR>", { desc = "Run SQL" })
+vim.keymap.set("n", "<CR>", "a<CR><Esc>", { desc = "Split line like insert enter" })
 --vim.keymap.set("v", "<leader>r", ":'<,'>DB<CR>", { desc = "Run selected SQL" })
 
 -- NORMAL MODE
@@ -34,7 +35,7 @@ vim.keymap.set("v", "<leader>r", function()
   end
 end, { desc = "Run selected" })
 
-vim.keymap.set({ "n", "v" }, "L", "$", { desc = "End of line" })
+vim.keymap.set({ "n", "v" }, "ee", "$", { desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "H", "^", { desc = "Start of line" })
 
 -- Indenting (Tab / Shift-Tab)

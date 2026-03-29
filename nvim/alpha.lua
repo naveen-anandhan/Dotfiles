@@ -52,7 +52,7 @@ return {
     -- 📝 FOOTER
     -- =========================
     dashboard.section.footer.val = {
-      "🚀 Happy coding Naveen"
+      "🚀 Happy coding Naveen",
     }
 
     dashboard.section.footer.opts.hl = "DashboardFooter"
@@ -61,7 +61,7 @@ return {
     -- ⚙️ SETUP
     -- =========================
     alpha.setup(dashboard.opts)
-
+    
     -- =========================
     -- 🎨 COLORS (PURPLE THEME)
     -- =========================
