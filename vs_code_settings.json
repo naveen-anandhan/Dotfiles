@@ -6,7 +6,8 @@
   "vim.sneak": true,
   "vim.useSystemClipboard": true,
   "vim.surround": true,
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "vim.leader": " ",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
 
   "vim.insertModeKeyBindings": [
     {
@@ -55,6 +56,31 @@
     {
       "before": ["d", "d"],
       "after": ["\"", "_", "d", "d"]
+    },
+    {
+      "before": ["<CR>"],
+      "after": ["a", "<CR>", "<Esc>"]
+    },
+    {
+      "before": ["e", "e"],
+      "after": ["$"]
+    },
+    {
+      "before": ["<C-/>"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": ["workbench.action.selectTheme"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["python.execInTerminal"],
+      "when": "editorLangId == python"
     }
   ],
 
@@ -101,6 +127,14 @@
     {
       "before": ["d"],
       "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["e", "e"],
+      "after": ["$"]
+    },
+    {
+      "before": ["<C-/>"],
+      "commands": ["editor.action.commentLine"]
     }
   ],
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
@@ -112,5 +146,23 @@
   "editor.inlineSuggest.enabled": false,
   "editor.inlineSuggest.suppressSuggestions": true,
   "editor.suggest.snippetsPreventQuickSuggestions": true,
-  "terminal.integrated.suggest.suggestOnTriggerCharacters": true
+  "terminal.integrated.suggest.suggestOnTriggerCharacters": true,
+  "terminal.integrated.tabs.showIcons": true,
+  "terminal.integrated.profiles.linux": {
+    "Ubuntu": {
+      "path": "/usr/bin/bash",
+      "icon": "terminal-ubuntu"
+    },
+    "Python": {
+      "path": "/usr/bin/python3",
+      "args": ["-i"],
+      "icon": "python"
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "Ubuntu",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+  "workbench.iconTheme": "fira-code-material-minimal",
+  "editor.fontFamily": "fira-code-nerd, FiraCode Nerd Font, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true
 }
+
