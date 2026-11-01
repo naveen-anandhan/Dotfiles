@@ -79,3 +79,16 @@ vim.lsp.handlers["textDocument/signatureHelp"] = function() end
 
 -- Show docs manually
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show docs" })
+
+-- Jupyter Notebook Keymaps
+vim.keymap.set("n", "<leader>jr", "<cmd>JupynvimRunCell<CR>", {
+  desc = "Jupyter: Run Cell",
+})
+
+vim.keymap.set("n", "<leader>jR", "<cmd>JupynvimRunAll<CR>", {
+  desc = "Jupyter: Run All Cells",
+})
+
+vim.keymap.set("n", "<leader>jb", "<cmd>JupynvimRunCell<CR>", {
+  desc = "Jupyter: Run Cell",
+})
