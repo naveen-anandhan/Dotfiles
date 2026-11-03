@@ -63,8 +63,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 --vim.keymap.set("v", "i", "<Esc>i", { noremap = true })
 
 -- Black Hole Register Deletion (Doesn't overwrite clipboard)
-vim.keymap.set({ "n", "v" }, "d", '"_d')
-vim.keymap.set("n", "dd", '"_dd')
+-- Only map 'd' in visual mode so Normal mode motions and buffer-local 'dd' (like notebook cut) aren't delayed
+vim.keymap.set("v", "d", '"_d', { desc = "Delete selection without overwriting clipboard" })
+vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line without overwriting clipboard" })
 
 -- Try both common escape codes for Ctrl + /
 vim.keymap.set("n", "<C-_>", "gcc", { remap = true, desc = "Toggle comment" })
@@ -79,16 +80,3 @@ vim.lsp.handlers["textDocument/signatureHelp"] = function() end
 
 -- Show docs manually
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show docs" })
-
--- Jupyter Notebook Keymaps
-vim.keymap.set("n", "<leader>jr", "<cmd>JupynvimRunCell<CR>", {
-  desc = "Jupyter: Run Cell",
-})
-
-vim.keymap.set("n", "<leader>jR", "<cmd>JupynvimRunAll<CR>", {
-  desc = "Jupyter: Run All Cells",
-})
-
-vim.keymap.set("n", "<leader>jb", "<cmd>JupynvimRunCell<CR>", {
-  desc = "Jupyter: Run Cell",
-})
